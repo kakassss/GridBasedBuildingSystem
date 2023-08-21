@@ -14,10 +14,9 @@ public class GridManager : MonoBehaviour
     private void Awake()
     {
         grid = new Grid[xVector,yVector];
-
         GenerateGrid();
 
-        //PrintGrid();    
+        PrintGrid();    
     }
 
     private void GenerateGrid()

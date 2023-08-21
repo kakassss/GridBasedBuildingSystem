@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 560835714}
   - component: {fileID: 560835716}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GridManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b77cc11539f394cb0ab1a2179d7ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xVector: 10
-  yVector: 10
+  xVector: 6
+  yVector: 6
 --- !u!4 &560835715
 Transform:
   m_ObjectHideFlags: 0
@@ -289,6 +289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 560835714}
+  horizontalDistance: 0
+  verticalDistance: 0
   gridVisual: {fileID: 1619986727994495221, guid: 6ca57bdffd3804e419a4774d0158d14f, type: 3}
 --- !u!1 &705507993
 GameObject:
