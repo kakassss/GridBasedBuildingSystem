@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,16 +10,16 @@ public class GridVisualizer : MonoBehaviour
 
     public GameObject gridVisual;
 
-    private List<GridGO> gridGOList;
+    private List<GridVisualData> gridGOList;
 
 
     private int firstDimensionLenght;
     private int secondDimensionLenght;
-
     private float equalizer = 0.5f;
+
     private void Start()
     {
-        gridGOList = new List<GridGO>();
+        gridGOList = new List<GridVisualData>();
 
         firstDimensionLenght = gridManager.grid.GetLength(0);
         secondDimensionLenght = gridManager.grid.GetLength(1);
@@ -34,12 +33,15 @@ public class GridVisualizer : MonoBehaviour
             for (int y = 0; y < secondDimensionLenght; y++)
             {
 
-                GridGO newGridVisual = new()
+                GridVisualData newGridVisual = new()
                 {
                     gridVisual = Instantiate(gridVisual),
                     gridTransform = gridVisual.transform,
-                    gridData = gridManager.grid[i, y]
+                    gridData = gridManager.grid[i, y],
+                    visualColor = Random.ColorHSV(),
                 };
+
+                newGridVisual.SetColor();
 
                 bool isEven = firstDimensionLenght % 2 == 0;
 
@@ -80,13 +82,5 @@ public class GridVisualizer : MonoBehaviour
 
     }
 
-
-
-
 }
-public class GridGO 
-{
-    public GameObject gridVisual;
-    public Transform gridTransform;
-    public Grid gridData;
-}
+
