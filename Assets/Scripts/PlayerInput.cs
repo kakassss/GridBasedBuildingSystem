@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
 
 public class PlayerInput : MonoBehaviour
 {
-    private Color InitColor;
-    private void OnMouseEnter() 
-    {
-        InitColor = GetComponent<MeshRenderer>().material.color;
+    [SerializeField] private GameObject playerColliderVisual;
+    private Camera camera;
 
-        GetComponent<MeshRenderer>().material.color = Color.red;
+    private void Start()
+    {
+        camera = Camera.main;    
     }
 
-    private void OnMouseExit()
+    private void Update()
     {
-        GetComponent<MeshRenderer>().material.color = InitColor;
-    }
+        var mousePosition = Input.mousePosition;
+        mousePosition.z = camera.transform.position.y;
 
+        var worldPosition = camera.ScreenToWorldPoint(mousePosition);
+        playerColliderVisual.transform.position = worldPosition;
+
+        Collider[] colliders = Physics.OverlapSphere(worldPosition, 0.02f);
+
+        foreach (var item in colliders)
+        {
+            if(item.CompareTag("Grid"))
+            {
+                Debug.Log(item.name);
+            }
+        }
+    }   
+
+    
 }

@@ -44,6 +44,7 @@
      <Compile Include="Assets\Scripts\GridVisualData.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\GridManager.cs" />
+     <Compile Include="Assets\Scripts\PlayerInputCollider.cs" />
      <Compile Include="Assets\Scripts\GridVisualizer.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

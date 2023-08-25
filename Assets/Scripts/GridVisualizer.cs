@@ -38,7 +38,7 @@ public class GridVisualizer : MonoBehaviour
                     gridVisual = Instantiate(gridVisual),
                     gridTransform = gridVisual.transform,
                     gridData = gridManager.grid[i, y],
-                    visualColor = Random.ColorHSV(),
+                    visualColor =  Color.blue,//Random.ColorHSV(),
                 };
 
                 newGridVisual.SetColor();
