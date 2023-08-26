@@ -11,6 +11,21 @@ public class GridManager : MonoBehaviour
 
     [HideInInspector] public Grid[,] grid;
 
+
+    public static List<Vector2Int> listNeighborGrids = new List<Vector2Int>
+    {
+        new Vector2Int(1,1),
+        new Vector2Int(1,-1),
+        new Vector2Int(-1,1),
+
+        new Vector2Int(1,0),
+        new Vector2Int(0,1),
+
+        new Vector2Int(-1,0),
+        new Vector2Int(0,-1),
+    };
+
+
     private void Awake()
     {
         grid = new Grid[xVector,yVector];
@@ -39,6 +54,17 @@ public class GridManager : MonoBehaviour
             {
                 Debug.Log(new Vector2(grid[i,y].x,grid[i,y].y));
             }
+        }
+
+    }
+
+    public static void CheckNeighborGrids(GridVisualData currentGrid)
+    {
+        var gridData = new Vector2(currentGrid.gridData.x,currentGrid.gridData.y);
+
+        foreach (var item in listNeighborGrids)
+        {
+            
         }
 
     }

@@ -39,6 +39,7 @@ public class GridVisualizer : MonoBehaviour
                     gridTransform = gridVisual.transform,
                     gridData = gridManager.grid[i, y],
                     visualColor =  Color.blue,//Random.ColorHSV(),
+                    IsEmpty = true,
                 };
 
                 newGridVisual.SetColor();
@@ -53,34 +54,9 @@ public class GridVisualizer : MonoBehaviour
                 gridGOList.Add(newGridVisual);
             }
         }
-
-        // for (int i = 0; i < firstDimensionLenght; i++)
-        // {
-        //     for (int y = 0; y < secondDimensionLenght; y++)
-        //     {
-        //         gridGOList[i].gridTransform 
-                
-        //     }
-        // }
-
-        
-
     }
 
-    private void DivideIntoGroups()
-    {
-        
-        if(firstDimensionLenght % 2 == 0) 
 
-        //Left-Top Group
-        for (int i = 0; i < firstDimensionLenght / 2; i++)
-        {
-            
-        }
-
-
-
-    }
 
 }
 
