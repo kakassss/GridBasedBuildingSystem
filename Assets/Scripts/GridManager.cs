@@ -12,7 +12,7 @@ public class GridManager : MonoBehaviour
     [HideInInspector] public Grid[,] grid;
 
 
-    public static List<Vector2Int> listNeighborGrids = new List<Vector2Int>
+    public static List<Vector2Int> listNeighborGrids = new()
     {
         new Vector2Int(1,1),
         new Vector2Int(1,-1),
@@ -58,18 +58,13 @@ public class GridManager : MonoBehaviour
 
     }
 
-    public static void CheckNeighborGrids(GridVisualData currentGrid)
+    public void CheckNeighborGrids(GridVisualData currentGrid)
     {
         var gridData = new Vector2(currentGrid.GridData.x,currentGrid.GridData.y);
 
-        foreach (var item in listNeighborGrids)
-        {
-            
-        }
+        var shapeT = BuildingObjectDatas.ShapeT;
+
+    
 
     }
-
-
-
-
 }

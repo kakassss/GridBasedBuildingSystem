@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColliderVisual: {fileID: 319884389}
-  tempGO: {fileID: 3400058802557649238, guid: 6bc6dd3708fc057478098a3bc424bbc7, type: 3}
+  tempGO: {fileID: 3124643078229311692, guid: dcb6b83eea59ced4b887d02f8153f5b0, type: 3}
 --- !u!4 &388336635
 Transform:
   m_ObjectHideFlags: 0

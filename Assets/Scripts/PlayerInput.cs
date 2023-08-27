@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private GameObject playerColliderVisual;
-
     [SerializeField] private GameObject tempGO;
     private Camera camera;
 
@@ -48,6 +47,7 @@ public class PlayerInput : MonoBehaviour
             {
                 if(!item.CompareTag("Grid")) return; 
 
+                CheckBuildingValid(item.GetComponent<GridObject>().visualData);
                 if(item.GetComponent<GridObject>().visualData.IsEmpty)
                 {
                     var newgridd = item.GetComponent<GridObject>().visualData; 
@@ -57,6 +57,12 @@ public class PlayerInput : MonoBehaviour
                 }
             }
     }
+
+    private void CheckBuildingValid(GridVisualData data)
+    {
+        //GridManager.CheckNeighborGrids(data);
+    }
+
     private void InstatiateObject(Vector3 spawnPosition)
     {
         Instantiate(tempGO,spawnPosition,Quaternion.identity);
