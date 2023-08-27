@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+[Serializable]
 public class GridVisualData
 {
     public GameObject GridVisual;

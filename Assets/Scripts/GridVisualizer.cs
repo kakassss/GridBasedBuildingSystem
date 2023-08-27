@@ -38,24 +38,6 @@ public class GridVisualizer : MonoBehaviour
 
                 newGrid.CreateNewData(gridManager.grid[i, y],Color.blue,true,newGrid.transform,newGrid.gameObject);
 
-                // newGridData.GridData = gridManager.grid[i, y];
-                // newGridData.VisualColor = Color.blue;
-                // newGridData.IsEmpty = true;
-
-                //newGridData.SetColor();
-
-
-                // GridVisualData newGridVisual = new()
-                // {
-                //     GridVisual = Instantiate(GridObject.gameObject),
-                //     GridTransform = GridObject.transform,
-                //     GridData = gridManager.grid[i, y],
-                //     VisualColor =  Color.blue,//Random.ColorHSV(),
-                //     IsEmpty = true,
-                // };    
-
-                //newGridVisual.SetColor();
-
                 bool isEven = firstDimensionLenght % 2 == 0;
 
                 newGrid.transform.position = 

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -18,22 +17,32 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        
-        GridObject();
-        
+        ApplyBuilding();
     }   
 
-    private void GridObject()
+    private void ApplyBuilding()
     {
-        var mousePosition = Input.mousePosition;
-        mousePosition.z = camera.transform.position.y;
-
-        var worldPosition = camera.ScreenToWorldPoint(mousePosition);
-        playerColliderVisual.transform.position = worldPosition;
+        CalculateVisualColliderPos();
 
         if(Input.GetMouseButtonDown(0))
         {
-            Collider[] colliders = Physics.OverlapSphere(worldPosition, 0.02f);
+            ApplySelectedGrid();
+        }
+    }
+
+    private void CalculateVisualColliderPos()
+    {
+        var mousePosition = Input.mousePosition;
+        mousePosition.z = 8;
+
+        var worldPosition = camera.ScreenToWorldPoint(mousePosition);
+        playerColliderVisual.transform.position = worldPosition;
+        playerColliderVisual.transform.position = new Vector3(playerColliderVisual.transform.position.x,0.3f,playerColliderVisual.transform.position.z);
+    }
+
+    private void ApplySelectedGrid()
+    {
+        Collider[] colliders = Physics.OverlapSphere(playerColliderVisual.transform.position, 0.01f);
 
             foreach (var item in colliders)
             {
@@ -47,9 +56,7 @@ public class PlayerInput : MonoBehaviour
 
                 }
             }
-        }
     }
-
     private void InstatiateObject(Vector3 spawnPosition)
     {
         Instantiate(tempGO,spawnPosition,Quaternion.identity);
