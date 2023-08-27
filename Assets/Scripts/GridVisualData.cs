@@ -1,15 +1,15 @@
 using UnityEngine;
-public class GridVisualData 
+public class GridVisualData
 {
-    public GameObject gridVisual;
-    public Transform gridTransform;
-    public Grid gridData;
-    public Color visualColor;
+    public GameObject GridVisual;
+    public Transform GridTransform;
+    public Grid GridData;
+    public Color VisualColor;
     public bool IsEmpty;
 
 
     public void SetColor()
     {
-        gridVisual.GetComponent<MeshRenderer>().material.color = visualColor;
+        GridVisual.GetComponent<MeshRenderer>().material.color = VisualColor;
     }
 }

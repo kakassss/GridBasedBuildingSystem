@@ -60,7 +60,7 @@ public class GridManager : MonoBehaviour
 
     public static void CheckNeighborGrids(GridVisualData currentGrid)
     {
-        var gridData = new Vector2(currentGrid.gridData.x,currentGrid.gridData.y);
+        var gridData = new Vector2(currentGrid.GridData.x,currentGrid.GridData.y);
 
         foreach (var item in listNeighborGrids)
         {

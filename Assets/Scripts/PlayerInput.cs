@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private GameObject playerColliderVisual;
+
+    [SerializeField] private GameObject tempGO;
     private Camera camera;
 
     private void Start()
@@ -16,22 +18,42 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        
+        GridObject();
+        
+    }   
+
+    private void GridObject()
+    {
         var mousePosition = Input.mousePosition;
         mousePosition.z = camera.transform.position.y;
 
         var worldPosition = camera.ScreenToWorldPoint(mousePosition);
         playerColliderVisual.transform.position = worldPosition;
 
-        Collider[] colliders = Physics.OverlapSphere(worldPosition, 0.02f);
-
-        foreach (var item in colliders)
+        if(Input.GetMouseButtonDown(0))
         {
-            if(item.CompareTag("Grid"))
+            Collider[] colliders = Physics.OverlapSphere(worldPosition, 0.02f);
+
+            foreach (var item in colliders)
             {
-                Debug.Log(item.name);
+                if(!item.CompareTag("Grid")) return; 
+
+                if(item.GetComponent<GridObject>().visualData.IsEmpty)
+                {
+                    var newgridd = item.GetComponent<GridObject>().visualData; 
+                    newgridd.IsEmpty = false;
+                    InstatiateObject(item.transform.position + new Vector3(0,1,0));
+
+                }
             }
         }
-    }   
+    }
+
+    private void InstatiateObject(Vector3 spawnPosition)
+    {
+        Instantiate(tempGO,spawnPosition,Quaternion.identity);
+    }    
 
     
 }

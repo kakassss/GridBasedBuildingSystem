@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColliderVisual: {fileID: 319884389}
+  tempGO: {fileID: 3400058802557649238, guid: 6bc6dd3708fc057478098a3bc424bbc7, type: 3}
 --- !u!4 &388336635
 Transform:
   m_ObjectHideFlags: 0
@@ -341,7 +342,7 @@ MonoBehaviour:
   gridManager: {fileID: 560835714}
   horizontalDistance: 0
   verticalDistance: 0
-  gridVisual: {fileID: 1619986727994495221, guid: 6ca57bdffd3804e419a4774d0158d14f, type: 3}
+  GridObject: {fileID: 4328538254819202744, guid: 6ca57bdffd3804e419a4774d0158d14f, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

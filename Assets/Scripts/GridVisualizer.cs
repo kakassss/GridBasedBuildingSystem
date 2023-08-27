@@ -8,7 +8,7 @@ public class GridVisualizer : MonoBehaviour
     [SerializeField] private float horizontalDistance;
     [SerializeField] private float verticalDistance;
 
-    public GameObject gridVisual;
+    public GridObject GridObject;
 
     private List<GridVisualData> gridGOList;
 
@@ -33,25 +33,37 @@ public class GridVisualizer : MonoBehaviour
             for (int y = 0; y < secondDimensionLenght; y++)
             {
 
-                GridVisualData newGridVisual = new()
-                {
-                    gridVisual = Instantiate(gridVisual),
-                    gridTransform = gridVisual.transform,
-                    gridData = gridManager.grid[i, y],
-                    visualColor =  Color.blue,//Random.ColorHSV(),
-                    IsEmpty = true,
-                };
+                var newGrid = Instantiate(GridObject);
+                var newGridData = newGrid.visualData;
 
-                newGridVisual.SetColor();
+                newGrid.CreateNewData(gridManager.grid[i, y],Color.blue,true,newGrid.transform,newGrid.gameObject);
+
+                // newGridData.GridData = gridManager.grid[i, y];
+                // newGridData.VisualColor = Color.blue;
+                // newGridData.IsEmpty = true;
+
+                //newGridData.SetColor();
+
+
+                // GridVisualData newGridVisual = new()
+                // {
+                //     GridVisual = Instantiate(GridObject.gameObject),
+                //     GridTransform = GridObject.transform,
+                //     GridData = gridManager.grid[i, y],
+                //     VisualColor =  Color.blue,//Random.ColorHSV(),
+                //     IsEmpty = true,
+                // };    
+
+                //newGridVisual.SetColor();
 
                 bool isEven = firstDimensionLenght % 2 == 0;
 
-                newGridVisual.gridTransform.position = 
+                newGrid.transform.position = 
                 isEven 
                 ? new Vector3(-firstDimensionLenght / 2 + i + equalizer ,0,-secondDimensionLenght/ 2 + y + equalizer)
                 : new Vector3(-firstDimensionLenght / 2 + i ,0,-secondDimensionLenght/ 2 + y ) ;
 
-                gridGOList.Add(newGridVisual);
+                gridGOList.Add(newGridData);
             }
         }
     }

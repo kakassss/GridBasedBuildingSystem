@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GridObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GridVisualData visualData;
 
-    // Update is called once per frame
-    void Update()
+    public void CreateNewData(Grid data,Color color,bool state, Transform transform,GameObject go)
     {
-        
+        visualData = new()
+        {
+            GridData = data,
+            VisualColor = color,
+            IsEmpty = state,
+
+            GridTransform = transform,
+            GridVisual = go,
+        };
+
+        visualData.SetColor();
     }
 }
