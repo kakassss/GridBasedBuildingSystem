@@ -10,7 +10,7 @@ public class GridVisualizer : MonoBehaviour
 
     public GridObject GridObject;
 
-    private List<GridVisualData> gridGOList;
+    [HideInInspector] public List<GridObject> gridGOList;
 
 
     private int firstDimensionLenght;
@@ -19,7 +19,7 @@ public class GridVisualizer : MonoBehaviour
 
     private void Start()
     {
-        gridGOList = new List<GridVisualData>();
+        gridGOList = new List<GridObject>();
 
         firstDimensionLenght = gridManager.grid.GetLength(0);
         secondDimensionLenght = gridManager.grid.GetLength(1);
@@ -45,12 +45,27 @@ public class GridVisualizer : MonoBehaviour
                 ? new Vector3(-firstDimensionLenght / 2 + i + equalizer ,0,-secondDimensionLenght/ 2 + y + equalizer)
                 : new Vector3(-firstDimensionLenght / 2 + i ,0,-secondDimensionLenght/ 2 + y ) ;
 
-                gridGOList.Add(newGridData);
+                gridGOList.Add(newGrid);
             }
         }
     }
 
+    public GridObject FindData(Vector2Int data)
+    {
+        Grid tempGrid = new (data.x,data.y);
+        
+        foreach (var item in gridGOList)
+        {
+            if(item.visualData.GridData == tempGrid)
+            {
+                return item;
+            } 
+            
+        }
 
+        return null;
+
+    }
 
 }
 
