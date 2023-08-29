@@ -490,7 +490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6734426545215214711, guid: 4a77890cc3c729744ae0aa9069eca77a, type: 3}
       propertyPath: m_Name
-      value: 'BaseBuildObject (+) '
+      value: BaseBuildObject (+)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

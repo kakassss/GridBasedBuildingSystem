@@ -5,7 +5,7 @@ public class GridVisualData
 {
     public GameObject GridVisual;
     public Transform GridTransform;
-    public Grid GridData;
+    public GridData GridData;
     public Color VisualColor;
     public bool IsEmpty;
 

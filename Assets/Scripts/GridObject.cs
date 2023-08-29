@@ -6,7 +6,7 @@ public class GridObject : MonoBehaviour
 {
     public GridVisualData visualData;
 
-    public void CreateNewData(Grid data,Color color,bool state, Transform transform,GameObject go)
+    public void CreateNewData(GridData data,Color color,bool state, Transform transform,GameObject go)
     {
         visualData = new()
         {

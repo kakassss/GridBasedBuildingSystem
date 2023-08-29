@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public struct Grid
+public struct GridData
 {
     public int x;
     public int y;
-    public Grid(int x,int y)
+    public GridData(int x,int y)
     {
         this.x = x;
         this.y = y;
     }
 
 
-    public static bool operator ==(Grid op1,  Grid op2) 
+    public static bool operator ==(GridData op1,  GridData op2) 
     {
         return op1.Equals(op2);
     }
 
-    public static bool operator !=(Grid op1,  Grid op2) 
+    public static bool operator !=(GridData op1,  GridData op2) 
     {
         return !op1.Equals(op2);
     }

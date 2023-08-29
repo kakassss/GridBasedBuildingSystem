@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridVisualizer : MonoBehaviour
+public class GridController : MonoBehaviour
 {
-    [SerializeField] private GridManager gridManager;
-    [SerializeField] private float horizontalDistance;
-    [SerializeField] private float verticalDistance;
-
     public GridObject GridObject;
-
+    [SerializeField] private GridDataManager gridManager;
     [HideInInspector] public List<GridObject> gridGOList;
-
 
     private int firstDimensionLenght;
     private int secondDimensionLenght;
@@ -34,7 +29,6 @@ public class GridVisualizer : MonoBehaviour
             {
 
                 var newGrid = Instantiate(GridObject);
-                var newGridData = newGrid.visualData;
 
                 newGrid.CreateNewData(gridManager.grid[i, y],Color.blue,true,newGrid.transform,newGrid.gameObject);
 
@@ -52,7 +46,7 @@ public class GridVisualizer : MonoBehaviour
 
     public GridObject FindData(Vector2Int data)
     {
-        Grid tempGrid = new (data.x,data.y);
+        GridData tempGrid = new (data.x,data.y);
         
         foreach (var item in gridGOList)
         {

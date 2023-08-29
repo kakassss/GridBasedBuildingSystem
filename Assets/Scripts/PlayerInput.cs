@@ -6,13 +6,15 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private GameObject playerColliderVisual;
-    [SerializeField] private GameObject tempGO;
+    [SerializeField] private GridController gridController;
 
-    [SerializeField] private GridVisualizer gridVisualizer;
     private Camera camera;
-
+    private PlayerShapeSelect playerShapeSelect;
+    private List<GridObject> setStateGrids;
+    
     private void Start()
     {
+        playerShapeSelect = GetComponent<PlayerShapeSelect>();
         camera = Camera.main;    
     }
 
@@ -53,48 +55,41 @@ public class PlayerInput : MonoBehaviour
 
                 if(item.GetComponent<GridObject>().visualData.IsEmpty)
                 {
-                    // var newgridd = item.GetComponent<GridObject>().visualData; 
-                    // newgridd.IsEmpty = false;
                     foreach (var shapeGrids in setStateGrids)
                     {
                         shapeGrids.visualData.IsEmpty = false;
                     }
 
-                    InstatiateObject(item.transform.position + new Vector3(0,1,0));
+                    InstatiateCurrentShapeObject(item.transform.position + new Vector3(0,1,0));
 
                 }
             }
     }
 
-    private List<GridObject> setStateGrids;
-
     private bool CheckBuildingValid(GridVisualData data)
     {
-        var shapeT = BuildingObjectDatas.ShapeT;
+        var currentShapeData = playerShapeSelect.CurrentShapeData;
         setStateGrids = new List<GridObject>();
 
-        foreach (var item in shapeT)
+        foreach (var item in currentShapeData)
         {
             var currentGrid = new Vector2Int(data.GridData.x,data.GridData.y);
             currentGrid += item;
 
-            var accurateGrid = gridVisualizer.FindData(currentGrid);
+            var accurateGrid = gridController.FindData(currentGrid);
             if(accurateGrid == null) return false;
 
             if(!accurateGrid.visualData.IsEmpty) return false;
 
-
             setStateGrids.Add(accurateGrid);
-            //accurateGrid.visualData.IsEmpty = false;
-
         }
 
         return true;
     }
 
-    private void InstatiateObject(Vector3 spawnPosition)
+    private void InstatiateCurrentShapeObject(Vector3 spawnPosition)
     {
-        Instantiate(tempGO,spawnPosition,Quaternion.identity);
+        Instantiate(playerShapeSelect.CurrentShapeGO,spawnPosition,Quaternion.identity);
     }    
 
     
